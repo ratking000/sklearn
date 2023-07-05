@@ -3,11 +3,15 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
+from sklearn import linear_model 
+from sklearn import svm
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.model_selection import cross_val_score,GridSearchCV
 from sklearn.metrics import mean_squared_error
 
 # Step 1: Read the CSV file
-df = pd.read_csv('/home/joey/program/sklearn/imbd-template/2022_first/2022-train-v2.csv')
+df = pd.read_csv('/home/joey/program/sklearn/sklearn/imbd-template/2022_first/2022-train-v2.csv')
 
 # Step 2: Summary of the dataframe
 # The describe function only shows some fields, I want it to display all fields
@@ -26,7 +30,7 @@ df = pd.read_csv('/home/joey/program/sklearn/imbd-template/2022_first/2022-train
 df = df.dropna(axis=1)
 
 # Set y as the target variable, which is the first column of the dataframe
-y = df.iloc[:, 4]
+y = df.iloc[:, 0]
 # print(y)
 # print(df.shape)
 
@@ -34,35 +38,25 @@ y = df.iloc[:, 4]
 X = df.iloc[:, 6:]
 
 # column_names = df.columns.tolist()
-
 # x_column = column_names[0]
-
-
 # for column in column_names[6:8]:
 #     print(x_column)
 #     plt.plot(df[x_column], df[column], label=column)
-
-# plt.plot(X, y)
-# plt.legend(loc="best")
-# plt.show()
 
 # Split the data into trainning and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=2023)
 
 # Use Linear Regression to train the model and test the model
-model = LinearRegression()
+model = linear_model.ElasticNet()
 
-# Use different model
-# from sklearn.linear_model import Lasso
-# model = Lasso()
-# from sklearn.linear_model import Ridge
-# model = Ridge()
+# model = make_pipeline(PolynomialFeatures(4), LinearRegression())
 
-print("Params:", LinearRegression().get_params())
+print("Params:", model.get_params())
+params = [
+    {'alpha':[0.1, 0.3, 0.5, 0.7, 0.9]}
+]
 
-print("git test")
-
-
+# best_model = GridSearchCV(model, param_grid=params, cv=5, scoring='accuracy')
 model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 
