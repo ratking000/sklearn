@@ -37,7 +37,6 @@ X = df.iloc[:, 6:]
 
 # x_column = column_names[0]
 
-
 # for column in column_names[6:8]:
 #     print(x_column)
 #     plt.plot(df[x_column], df[column], label=column)
@@ -59,9 +58,7 @@ model = LinearRegression()
 # model = Ridge()
 
 print("Params:", LinearRegression().get_params())
-
-print("git test")
-
+quit()
 
 model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
