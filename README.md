@@ -3,7 +3,7 @@ sklearn record
 
 
 ## 0705 record
-使用2022-train-v2.csv  
+train01 使用2022-train-v2.csv  
 
 測試不同模型 的rmse  
 LinearRegression 9.6964  

@@ -13,30 +13,14 @@ from sklearn.preprocessing import PolynomialFeatures
 from sklearn.model_selection import cross_val_score,GridSearchCV
 from sklearn.metrics import mean_squared_error
 
-# Step 1: Read the CSV file
+# Read the CSV file
 df = pd.read_csv(r'C:\Users\User\sklearn\sklearn\imbd-template\2022_first\2022-train-v2.csv')
-
-# Step 2: Summary of the dataframe
-# The describe function only shows some fields, I want it to display all fields
-# pd.set_option('display.max_columns', None)
-
-# summary = df.describe()
-# print(summary)
-
-# Identify the missing fields, and sort them
-# print(df.isnull())
-
-# print(df.isnull().sum().sort_values(ascending=False))
-# print(df.isnull().sum().sum())
 
 # Erase the columns with missing values
 df = df.dropna(axis=1)
 
-# Set y as the target variable, which is the first column of the dataframe
 y = df.iloc[:, 0]
 # print(df.shape)
-
-# Set X as the feature variables, which are the remaining columns of the dataframe except the first 6 columns
 X = df.iloc[:, 6:]  
 
 # Split the data into trainning and testing sets
