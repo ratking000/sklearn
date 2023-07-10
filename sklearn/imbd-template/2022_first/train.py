@@ -6,7 +6,7 @@ from sklearn.model_selection import train_test_split
 from sklearn import linear_model 
 from sklearn import svm
 from sklearn import tree
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import RandomForestRegressor
 
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import PolynomialFeatures
@@ -43,7 +43,8 @@ X = df.iloc[:, 6:]
 X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=2023)
 
 # Use Linear Regression to train the model and test the model
-model = linear_model.LinearRegression()
+model = linear_model.LassoLars()
+# model = RandomForestRegressor()
 
 # model = make_pipeline(PolynomialFeatures(4), LinearRegression())
 
@@ -53,6 +54,7 @@ params = [
 ]
 
 # best_model = GridSearchCV(model, param_grid=params, cv=5, scoring='accuracy')
+
 model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 
