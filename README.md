@@ -20,3 +20,19 @@ Random Forest 10.5705  但
 現在只有把y設為第一欄，但實際上會有六欄，這樣只有測一欄好像不準，全部測再平均?  
 sklearn官網上的decision tree 中有提到 Multi-output 和 missing value support 之後研究  
 
+## 0717 
+train02 測試不同的model和scaler的組合  
+LinearRegression 
+- MinMaxScaler  9.6433
+- StandardScaler   9.6509
+- RobustScaler  9.6232
+- Normalizer 9.6394
+
+LassoLars
+- MinMaxScaler feature range越大，rmse越小，大概在（0, 100）時rmse為8.90
+
+Decision Tree
+- MinMaxScaler 9.9598
+
+Random Forest 
+- MinMaxScaler 8.7818

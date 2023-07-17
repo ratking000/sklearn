@@ -3,9 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 from sklearn.model_selection import train_test_split
-from sklearn import linear_model 
-from sklearn import svm
-from sklearn import tree
+from sklearn import linear_model, svm, tree
 from sklearn.ensemble import RandomForestRegressor
 
 from sklearn.pipeline import make_pipeline
@@ -14,7 +12,7 @@ from sklearn.model_selection import cross_val_score,GridSearchCV
 from sklearn.metrics import mean_squared_error
 
 # Read the CSV file
-df = pd.read_csv(r'C:\Users\User\sklearn\sklearn\imbd-template\2022_first\2022-train-v2.csv')
+df = pd.read_csv(r'/home/joey/program/sklearn/sklearn/imbd-template/2022_first/2022-train-v2.csv')
 
 # Erase the columns with missing values
 df = df.dropna(axis=1)
