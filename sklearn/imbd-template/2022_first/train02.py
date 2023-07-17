@@ -1,14 +1,17 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from sklearn.preprocessing import StandardScaler
+
+from sklearn.linear_model import LinearRegression
+from sklearn.svm import SVR
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.ensemble import RandomForestRegressor
 
 from sklearn.model_selection import GridSearchCV, cross_val_score, ShuffleSplit
 from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import MinMaxScaler
-from sklearn.linear_model import LinearRegression
+from sklearn.preprocessing import MinMaxScaler, StandardScaler, RobustScaler, Normalizer
 
-df = pd.read_csv(r'C:\Users\User\sklearn\sklearn\imbd-template\2022_first\2022-train-v2.csv')
+df = pd.read_csv(r'/home/joey/program/sklearn/sklearn/imbd-template/2022_first/2022-train-v2.csv')
 
 # Erase the columns with missing values
 df = df.dropna(axis=1)
@@ -20,14 +23,14 @@ X = df.iloc[:, 6:]
 # Create a pipeline with scaler and regressor
 pipeline = Pipeline([
     ('scaler', MinMaxScaler()),
-    ('regressor', LinearRegression())
+    ('regressor', DecisionTreeRegressor())
 ])
 
 # Define the parameters for grid search
 parameters = {
-    'scaler__feature_range': [(0, 1), (0, 10)],
-    'regressor__fit_intercept': [True, False],
-    'regressor__normalize': [True, False]
+    'scaler__feature_range': [(0, 1), (0, 10), (0, 200)],
+    # 'regressor__fit_intercept': [True, False],
+    # 'regressor__n_jobs': [-1, 1, 2]
 }
 
 # Create a ShuffleSplit object for randomizing train and test datasets
