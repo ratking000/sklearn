@@ -21,6 +21,13 @@ y = df.iloc[:, 0]
 # print(df.shape)
 X = df.iloc[:, 6:]  
 
+plt.plot(df.iloc[:, 8])
+plt.plot(df.iloc[:, 0])
+plt.show()
+
+
+quit()
+
 # Split the data into trainning and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=2023)
 

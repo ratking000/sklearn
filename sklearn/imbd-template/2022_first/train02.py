@@ -23,12 +23,12 @@ X = df.iloc[:, 6:]
 # Create a pipeline with scaler and regressor
 pipeline = Pipeline([
     ('scaler', MinMaxScaler()),
-    ('regressor', DecisionTreeRegressor())
+    ('regressor', RandomForestRegressor())
 ])
 
 # Define the parameters for grid search
 parameters = {
-    'scaler__feature_range': [(0, 1), (0, 10), (0, 200)],
+    # 'scaler__feature_range': [(0, 1), (0, 10), (0, 200)],
     # 'regressor__fit_intercept': [True, False],
     # 'regressor__n_jobs': [-1, 1, 2]
 }

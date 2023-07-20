@@ -36,3 +36,5 @@ Decision Tree
 
 Random Forest 
 - MinMaxScaler 8.7818
+
+- [sklearn](https://ithelp.ithome.com.tw/users/20107247/ironman/4723)
