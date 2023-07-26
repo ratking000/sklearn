@@ -11,7 +11,7 @@ from sklearn.model_selection import GridSearchCV, cross_val_score, ShuffleSplit
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import MinMaxScaler, StandardScaler, RobustScaler, Normalizer
 
-df = pd.read_csv(r'/home/joey/program/sklearn/sklearn/imbd-template/2022_first/2022-train-v2.csv')
+df = pd.read_csv(r'sklearn\imbd-template\2022_first\2022-train-v2.csv')
 
 # Erase the columns with missing values
 df = df.dropna(axis=1)
@@ -23,7 +23,7 @@ X = df.iloc[:, 6:]
 # Create a pipeline with scaler and regressor
 pipeline = Pipeline([
     ('scaler', MinMaxScaler()),
-    ('regressor', RandomForestRegressor())
+    ('regressor', LinearRegression())
 ])
 
 # Define the parameters for grid search
